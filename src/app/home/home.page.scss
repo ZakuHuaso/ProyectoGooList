@@ -1,0 +1,69 @@
+ion-content {
+  --background: #ffffff;
+}
+
+.progress-container {
+  background-color: #f4f4f4;
+  border-radius: 20px;
+  padding: 10px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.progress-container {
+  background-color: #f4f4f4;
+  border-radius: 25px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.progress-text {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+}
+
+.green-background {
+  position: fixed;
+  bottom: 56px; // Height of the tab bar
+  left: 0;
+  right: 0;
+  height: 50px;
+  background-color: #68BB5A;
+}
+
+#limo{
+  position: fixed;
+  bottom: 100px;
+  right: 50px;
+}
+
+ion-tab-bar {
+  --background: #ffffff;
+}
+
+.add-button {
+  --color: #0404cf;
+  font-size: 24px;
+}
+
+ion-toolbar {
+  --background: #ffffff;
+}
+
+ion-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+ion-tab-button {
+  --color: #888;
+  --color-selected: #3880ff;
+}
+
+

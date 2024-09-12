@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back" defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="input-style">
+    <ion-list>
+      <ion-input
+        type="text"
+        fill="outline"
+        label="Nombre de Usuario"
+        labelPlacement="floating"
+        errorText="Nombre de Usuario invalido"
+        helperText="Solo letras y numeros"
+        ngModel
+      ></ion-input>
+      <br>
+      <ion-input
+        type="email"
+        fill="outline"
+        label="Email"
+        labelPlacement="floating"
+        errorText="Email invalido"
+        helperText="Ej. 'goomy@fakemail.com'"
+        ngModel
+        email
+      ></ion-input>
+      <br>
+      <ion-input
+        type="password"
+        fill="outline"
+        label="Contraseña"
+        labelPlacement="floating"
+        errorText="Contraseña no valida"
+        ngModel
+      ></ion-input>
+      <br>
+      <ion-input
+        type="password"
+        fill="outline"
+        label="Repetir Contraseña"
+        labelPlacement="floating"
+        errorText="Contraseña no coinciden"
+        helperText="La contraseña debe tener minimo una Minuscula, Mayuscula y un numero."
+        ngModel
+      ></ion-input>
+    </ion-list>
+  </div>
+  
+  <div>
+    <ion-button expand="block" size="large">Continuar</ion-button>
+  </div>
+
+</ion-content>
