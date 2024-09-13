@@ -12,8 +12,4 @@ export class HomePage {
 
   constructor() {}
 
-  onTabClick(tab: string) {
-    console.log(`${tab}`);
-    
-  }
 }
