@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { NavBarComponent } from './components/navbar/nav-bar.component';
 
 const routes: Routes = [
   {
@@ -10,10 +11,6 @@ const routes: Routes = [
     path: '',
     redirectTo: 'splash',
     pathMatch: 'full'
-  },
-  {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
     path: 'login',
@@ -33,20 +30,35 @@ const routes: Routes = [
     loadChildren: () => import('./tutorial/tutorial.module').then( m => m.TutorialPageModule)
   },
   {
-    path: 'buscar-tareas',
-    loadChildren: () => import('./buscar-tareas/buscar-tareas.module').then( m => m.BuscarTareasPageModule)
-  },
-  {
-    path: 'anadir-tareas',
-    loadChildren: () => import('./anadir-tareas/anadir-tareas.module').then( m => m.AnadirTareasPageModule)
-  },
-  {
-    path: 'editar-etiquetas',
-    loadChildren: () => import('./editar-etiquetas/editar-etiquetas.module').then( m => m.EditarEtiquetasPageModule)
-  },
-  {
-    path: 'perfil',
-    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
+    path: '',
+    component: NavBarComponent,
+    children: [
+      {
+        path: 'home',
+        loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+      },
+      {
+        path: 'buscar-tareas',
+        loadChildren: () => import('./buscar-tareas/buscar-tareas.module').then( m => m.BuscarTareasPageModule)
+      },
+      {
+        path: 'anadir-tareas',
+        loadChildren: () => import('./anadir-tareas/anadir-tareas.module').then( m => m.AnadirTareasPageModule)
+      },
+      {
+        path: 'editar-etiquetas',
+        loadChildren: () => import('./editar-etiquetas/editar-etiquetas.module').then( m => m.EditarEtiquetasPageModule)
+      },
+      {
+        path: 'perfil',
+        loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
+      },
+      {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full'
+      }
+    ]
   },
   {
     path: 'ver-tarea',
