@@ -5,7 +5,35 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
+  <div class="container">
+    <div class="avatar">
+      <ion-avatar><img alt="Silueta de persona" src="https://ionicframework.com/docs/img/demos/avatar.svg"/></ion-avatar>
+    </div>
+    
+    <div class="dato">
+      <ion-item> Usuario </ion-item>
+      <ion-item> Email </ion-item>
+    </div>
+  </div>
+
   <div (click)="performLogout()">
     <p style="color: red;"> Cerrar Sesion </p>
   </div>
+
+
+  <ion-item>
+    <ion-toggle [enableOnOffLabels]="true">Permitir alarmas</ion-toggle>
+  </ion-item>
+  <p class="info">Permite a la aplicación notificar alarmas</p>
+
+  <div>
+    <ion-item class="Barra-Rango">
+      <ion-range label="Tareas diarias" aria-label="Custom range" [min]="1" [max]="5" [value]="3" [pin]="true"
+        [ticks]="true" [snaps]="true"></ion-range>
+    </ion-item>
+    <p class="info"> El máximo de tareas diarias que se muestran en pantalla es 5</p>
+  </div>
+
+
 </ion-content>
