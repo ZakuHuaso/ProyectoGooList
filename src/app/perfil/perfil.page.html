@@ -1,39 +1,54 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>perfil</ion-title>
+    <ion-title>Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-
+<ion-content class="ion-padding" [fullscreen]="true">
+  <hr>
   <div class="container">
-    <div class="avatar">
-      <ion-avatar><img alt="Silueta de persona" src="https://ionicframework.com/docs/img/demos/avatar.svg"/></ion-avatar>
+    <div style="flex-basis: 10%;">
+      <ion-avatar><img alt="Silueta de persona"
+          src="https://ionicframework.com/docs/img/demos/avatar.svg" /></ion-avatar>
     </div>
-    
-    <div class="dato">
+
+    <div style="flex-basis: 70%;">
       <ion-item> Usuario </ion-item>
       <ion-item> Email </ion-item>
     </div>
   </div>
 
   <div (click)="performLogout()">
-    <p style="color: red;"> Cerrar Sesion </p>
+    <p style="color: red;font-size: 12px;"> Cerrar Sesion </p>
   </div>
 
+  <div class="password">
+    <ion-list>
+      <ion-item>
+        <ion-input label="Contraseña nueva" placeholder=""></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Repetir contraseña" placeholder=""></ion-input>
+      </ion-item>
+    </ion-list>
+  </div>
 
-  <ion-item>
+  <ion-item class="alarma">
     <ion-toggle [enableOnOffLabels]="true">Permitir alarmas</ion-toggle>
   </ion-item>
   <p class="info">Permite a la aplicación notificar alarmas</p>
 
+
   <div>
-    <ion-item class="Barra-Rango">
+    <ion-item class="alarma">
       <ion-range label="Tareas diarias" aria-label="Custom range" [min]="1" [max]="5" [value]="3" [pin]="true"
         [ticks]="true" [snaps]="true"></ion-range>
     </ion-item>
     <p class="info"> El máximo de tareas diarias que se muestran en pantalla es 5</p>
   </div>
 
+  <div>
+    <p style="color: #9DB2CE;"> Guardar cambios </p>
+  </div>
 
 </ion-content>
