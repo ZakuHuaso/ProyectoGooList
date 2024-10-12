@@ -10,6 +10,9 @@
     <div style="flex-basis: 10%;">
       <ion-avatar><img alt="Silueta de persona"
           src="https://ionicframework.com/docs/img/demos/avatar.svg" /></ion-avatar>
+      <div (click)="performLogout()">
+        <p style="color: red;font-size: 12px;"> Cerrar Sesion </p>
+      </div>
     </div>
 
     <div style="flex-basis: 70%;">
@@ -18,9 +21,8 @@
     </div>
   </div>
 
-  <div (click)="performLogout()">
-    <p style="color: red;font-size: 12px;"> Cerrar Sesion </p>
-  </div>
+
+  <hr>
 
   <div class="password">
     <ion-list>
@@ -47,7 +49,7 @@
     <p class="info"> El máximo de tareas diarias que se muestran en pantalla es 5</p>
   </div>
 
-  <div>
+  <div class="container">
     <p style="color: #9DB2CE;"> Guardar cambios </p>
   </div>
 
