@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
+
+interface DateItem {
+  dayName: string;
+  day: string;
+  monthYear: string;
+}
 
 @Component({
   selector: 'app-anadir-tareas',
@@ -6,10 +13,52 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./anadir-tareas.page.scss'],
 })
 export class AnadirTareasPage implements OnInit {
+  dateList: DateItem[] = [];
 
-  constructor() { }
+  constructor(private navCtrl: NavController) { }
 
   ngOnInit() {
+    this.generateDateList();
   }
+
+  generateDateList() {
+    const today = new Date();
+    const days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+    const months = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+
+    for (let i = 0; i < 22; i++) {
+      const date = new Date(today);
+      date.setDate(today.getDate() + i);
+
+      let dayName = days[date.getDay()];
+      let dayString = date.getDate().toString();
+
+      if (i === 0) {
+        dayName = `${dayName} ${dayString}, hoy`;
+      } else if (i === 1) {
+        dayName = `${dayName} ${dayString}, mañana`;
+      } else {
+        dayName = `${dayName} ${dayString}`;
+      }
+
+      this.dateList.push({
+        dayName: dayName,
+        day: '',
+        monthYear: `${months[date.getMonth()]} ${date.getFullYear()}`
+      });
+    }
+  }
+
+  goToNewTaskPage() {
+    this.navCtrl.navigateForward('/nueva-tarea');
+  }
+
+
+  selectedButton: string = '';
+
+  selectButton(button: string) {
+    this.selectedButton = button;
+  }
+
 
 }

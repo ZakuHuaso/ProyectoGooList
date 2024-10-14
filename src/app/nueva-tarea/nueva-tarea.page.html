@@ -1,13 +1,31 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>nueva-tarea</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back" defaultHref="/anadir-tareas"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Nueva Tarea</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">nueva-tarea</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding" [fullscreen]="true">
+  <div class="Guardar">
+    <h1>Guardar</h1>
+  </div>
+
+  <div class="input">
+    <ion-input label="Tarea" label-placement="floating" fill="outline" placeholder="Nombre de la tarea"></ion-input>
+  </div>
+
+  <ion-button shape="round"> Sin Etiquetas </ion-button>
+
+  <div class="fecha">
+    <ion-icon name="calendar-outline" slot="start" ></ion-icon>
+    <ion-datetime presentation="date"></ion-datetime>
+  </div>
+
+  <div class="alarma">
+    <ion-icon name="notifications-outline" slot="start"></ion-icon>
+    <ion-datetime presentation="time"></ion-datetime>
+  </div>
+
 </ion-content>

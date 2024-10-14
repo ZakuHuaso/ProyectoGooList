@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./buscar-tareas.page.scss'],
 })
 export class BuscarTareasPage implements OnInit {
-
+  
   constructor() { }
 
   ngOnInit() {
+  }
+
+  selectedButton: string = '';
+
+  selectButton(button: string) {
+    this.selectedButton = button;
   }
 
 }
