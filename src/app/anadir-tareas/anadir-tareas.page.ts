@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 interface DateItem {
   dayName: string;
@@ -15,7 +15,7 @@ interface DateItem {
 export class AnadirTareasPage implements OnInit {
   dateList: DateItem[] = [];
 
-  constructor(private navCtrl: NavController) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.generateDateList();
@@ -49,8 +49,8 @@ export class AnadirTareasPage implements OnInit {
     }
   }
 
-  goToNewTaskPage() {
-    this.navCtrl.navigateForward('/nueva-tarea');
+  nuevaTarea() {
+    this.router.navigate(['/nueva-tarea'])
   }
 
 

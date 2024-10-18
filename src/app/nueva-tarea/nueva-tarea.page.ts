@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { Component, OnInit, ViewChild} from '@angular/core';
+import { IonDatetime } from '@ionic/angular';
 
 @Component({
   selector: 'app-nueva-tarea',
@@ -7,12 +7,20 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./nueva-tarea.page.scss'],
 })
 export class NuevaTareaPage implements OnInit {
-
+  
   constructor() { }
 
   ngOnInit() {
   }
   
-  
+  selectedDate: string = '';
+  selectedTime: string = '';
 
+  abrirDate() {
+    
+  }
+
+  abrirAlarm() {
+    
+  }
 }

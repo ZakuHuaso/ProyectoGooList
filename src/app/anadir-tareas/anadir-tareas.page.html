@@ -8,19 +8,19 @@
   <div class="button-container">
     <ion-button 
       class="custom-button" 
-      [ngClass]="{'selected': selectedButton === 'programado'}"
-      (click)="selectButton('programado')">
+      [ngClass]="{'selected': selectedButton === 'sin fecha'}"
+      (click)="selectButton('sin fecha')">
       Sin Fecha
     </ion-button>
     <ion-button 
       class="custom-button" 
-      [ngClass]="{'selected': selectedButton === 'completado'}"
-      (click)="selectButton('completado')">
+      [ngClass]="{'selected': selectedButton === 'programado'}"
+      (click)="selectButton('programado')">
       Programado
     </ion-button>
   </div>
 
-  <div class="agregar-tarea"> Agregar nueva tarea </div>
+  <div class="agregar-tarea" (click)="nuevaTarea()"> Agregar nueva tarea </div>
 
   <ion-list>
     <ion-item *ngFor="let date of dateList">
