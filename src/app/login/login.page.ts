@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SessionManager } from 'src/managers/SessionManager';
 
+import { AlertController } from '@ionic/angular';
+import { MenuController } from '@ionic/angular';
+import { Storage } from '@ionic/storage-angular';
+import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -11,24 +16,37 @@ export class LoginPage implements OnInit {
 
   constructor(private router: Router, private sessionManager: SessionManager) { }
 
-    user: string = '';
+    email: string = '';
     password: string = '';
 
   ngOnInit() {
   }
 
-  onLoginButtonPressed() {
-    if(this.sessionManager.performLogin(this.user, this.password)) {
-      this.router.navigate(['/home'])
+  async buttonPressLogin(){
+    if (this.email === '' || this.password === '') {
+      alert('Por favor completa todos los campos');
+      return;
+    }
+    const loginSuccess = await this.sessionManager.performLogin(this.email, this.password);
+    if (loginSuccess){
+      await this.sessionManager.setSession(true);
+      this.router.navigate(['/home']);
     } else {
-      this.user=''
-      this.password=''
-      alert('Usuario invalido, vuelva a intentarlo')
+      this.email = ' ';
+      this.email = ' ';
+      alert('Credenciales invalidas');
     }
   }
 
   onRegisterButtonPressed() {
     this.router.navigate(['/register'])
+  }
+
+  async buttonGoogle(){
+    const loginSuccess = await this.sessionManager.loginWithGoogle();
+    if (loginSuccess){
+      this.router.navigate(['/home']);
+    }
   }
 
 }

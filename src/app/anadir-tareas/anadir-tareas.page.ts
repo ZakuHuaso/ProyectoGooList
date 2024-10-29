@@ -26,7 +26,7 @@ export class AnadirTareasPage implements OnInit {
     const days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
     const months = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
 
-    for (let i = 0; i < 22; i++) {
+    for (let i = 0; i < 10; i++) {
       const date = new Date(today);
       date.setDate(today.getDate() + i);
 
