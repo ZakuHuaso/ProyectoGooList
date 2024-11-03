@@ -7,6 +7,7 @@ import { IonDatetime } from '@ionic/angular';
   styleUrls: ['./nueva-tarea.page.scss'],
 })
 export class NuevaTareaPage implements OnInit {
+  dateExample = new Date().toISOString();
   
   constructor() { }
 

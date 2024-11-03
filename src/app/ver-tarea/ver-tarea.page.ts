@@ -6,10 +6,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ver-tarea.page.scss'],
 })
 export class VerTareaPage implements OnInit {
-
+  dateExample = new Date().toISOString();
+  
   constructor() { }
 
   ngOnInit() {
+  }
+
+  selectedDate: string = '';
+  selectedTime: string = '';
+
+  abrirDate() {
+    
+  }
+
+  abrirAlarm() {
+    
   }
 
 }
