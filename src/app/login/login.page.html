@@ -20,12 +20,14 @@
       </ion-item>
     </div>
 
-    <h1 (click)="buttonGoogle()"> Google </h1>
-
     <div class="button-container">
       <ion-button expand="block" (click)="buttonPressLogin()">Continuar</ion-button>
       <p style="text-align: center;"> o </p>
       <p class="texto">¿No tiene cuenta? <span class="texto color-registro" (click)="onRegisterButtonPressed()">Crea una</span> </p> 
     </div>
+
+    <ion-button expand="block" color="tertiary" (click)="buttonGoogle()">Iniciar sesion con Google</ion-button>
+
+    
   </div>
 </ion-content>

@@ -8,52 +8,52 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="input-style">
-    <ion-list>
-      <ion-input
-        type="text"
-        fill="outline"
-        label="Nombre de Usuario"
-        labelPlacement="floating"
-        errorText="Nombre de Usuario invalido"
-        helperText="Solo letras y numeros"
-        ngModel
-      ></ion-input>
-      <br>
-      <ion-input
-        type="email"
-        fill="outline"
-        label="Email"
-        labelPlacement="floating"
-        errorText="Email invalido"
-        helperText="Ej. 'goomy@fakemail.com'"
-        ngModel
-        email
-      ></ion-input>
-      <br>
-      <ion-input
-        type="password"
-        fill="outline"
-        label="Contraseña"
-        labelPlacement="floating"
-        errorText="Contraseña no valida"
-        ngModel
-      ></ion-input>
-      <br>
-      <ion-input
-        type="password"
-        fill="outline"
-        label="Repetir Contraseña"
-        labelPlacement="floating"
-        errorText="Contraseña no coinciden"
-        helperText="La contraseña debe tener minimo una Minuscula, Mayuscula y un numero."
-        ngModel
-      ></ion-input>
-    </ion-list>
-  </div>
-  
-  <div>
-    <ion-button expand="block" size="large">Continuar</ion-button>
-  </div>
+  <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+    <div class="input-style">
+      <ion-list>
+        <ion-input
+          type="text"
+          fill="outline"
+          label="Nombre de Usuario"
+          labelPlacement="floating"
+          formControlName="username"
+          [errorText]="registerForm.controls['username'].errors?.['required'] ? 'Nombre requerido' : 'Nombre inválido'"
+          helperText="Solo letras y números"
+        ></ion-input>
+        <br>
+        <ion-input
+          type="email"
+          fill="outline"
+          label="Email"
+          labelPlacement="floating"
+          formControlName="email"
+          [errorText]="registerForm.controls['email'].errors?.['required'] ? 'Email requerido' : 'Email inválido'"
+          helperText="Ej. 'goomy@fakemail.com'"
+        ></ion-input>
+        <br>
+        <ion-input
+          type="password"
+          fill="outline"
+          label="Contraseña"
+          labelPlacement="floating"
+          formControlName="password"
+          [errorText]="registerForm.controls['password'].errors ? 'Contraseña inválida' : ''"
+        ></ion-input>
+        <br>
+        <ion-input
+          type="password"
+          fill="outline"
+          label="Repetir Contraseña"
+          labelPlacement="floating"
+          formControlName="confirmPassword"
+          [errorText]="registerForm.controls['confirmPassword'].errors?.['notMatching'] ? 'Las contraseñas no coinciden' : ''"
+          helperText="La contraseña debe tener mínimo una minúscula, mayúscula y un número."
+        ></ion-input>
+      </ion-list>
+    </div>
 
+    <div>
+      <ion-button expand="block" size="large" type="submit" [disabled]="registerForm.invalid">Continuar</ion-button>
+    </div>
+  </form>
 </ion-content>

@@ -16,11 +16,10 @@
     </div>
 
     <div style="flex-basis: 70%;">
-      <ion-item> Usuario </ion-item>
+      <ion-item> Usuario {{ username }} </ion-item> 
       <ion-item> Email </ion-item>
     </div>
   </div>
-
 
   <hr>
 
@@ -52,5 +51,7 @@
   <div class="container">
     <p style="color: #9DB2CE;"> Guardar cambios </p>
   </div>
+
+  <ion-button expand="block" color="danger" (click)="onDeleteAccount()">Eliminar Cuenta</ion-button>
 
 </ion-content>
