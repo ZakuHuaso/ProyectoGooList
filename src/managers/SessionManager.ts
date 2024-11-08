@@ -22,7 +22,7 @@ export class SessionManager {
     // Guarda el estado del login 
     async setSession(isLoggedIn: boolean): Promise<void> {
         await this.storage.set('isLoggedIn', isLoggedIn);
-        console.log("Sesion activa");
+        
     }
 
     // Verifica si el usuario está logueado 
@@ -35,7 +35,7 @@ export class SessionManager {
     async setUsername(username: string): Promise<void> {
         this.username = username;
         await this.storage.set('username', username);
-        console.log(this.username);
+        
     }
 
     // Obtiene el nombre de usuario desde Storage

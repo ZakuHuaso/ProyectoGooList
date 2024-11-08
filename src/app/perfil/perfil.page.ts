@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserLogin } from 'src/app/use-cases/user-login'; // Importa el caso de uso de login
+import { UserLogin } from 'src/app/use-cases/user-login';
 import { UserDelete } from '../use-cases/user-delete';
 import { StorageService } from 'src/managers/StorageService';
 
@@ -10,23 +10,24 @@ import { StorageService } from 'src/managers/StorageService';
   styleUrls: ['./perfil.page.scss'],
 })
 export class PerfilPage implements OnInit {
-  username: string | null = null; 
+  username: string | null = null;
+  email: string | null = null;
 
   constructor(
     private router: Router,
-    private userLoginUseCase: UserLogin, 
+    private userLoginUseCase: UserLogin,
     private userDelete: UserDelete,
     private storageService: StorageService
   ) {}
 
-  ngOnInit() {
-    this.getUsername();
+  async ngOnInit() {  // Declarar ngOnInit como async
+    await this.loadUserData();
   }
 
   async performLogout() {
     const confirmLogout = confirm('¿Desea cerrar sesión?');
     if (confirmLogout) {
-      await this.userLoginUseCase.logout();  
+      await this.userLoginUseCase.logout();
       this.router.navigate(['/login']);
     }
   }
@@ -38,8 +39,11 @@ export class PerfilPage implements OnInit {
     }
   }
 
-  async getUsername() {
+  // Método para cargar datos del usuario
+  private async loadUserData() {
     this.username = await this.storageService.get('username');
-  }
+    this.email = await this.storageService.get('email');
 
+    // Si `username` o `email` están vacíos, puedes incluir aquí una lógica para rescatarlos de Firestore si es necesario
+  }
 }

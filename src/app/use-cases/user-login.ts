@@ -24,16 +24,16 @@ export class UserLogin {
       const result = await this.afAuth.signInWithEmailAndPassword(email, password);
       const userId = result.user?.uid || '';
 
-      // Obtener y almacenar el username en Ionic Storage
-      const username = await this.userService.getUsernameById(userId);
-      if (username) {
-        await this.storageService.set('username', username);
-      }
+      if (userId) {
+        const userDoc = await this.firestore.collection('usuario').doc(userId).ref.get();
+        const userData = userDoc.data() as { username?: string; email?: string };
 
-      // Guardar estado de sesión en SessionManager e Ionic Storage
-      await this.sessionManager.setSession(true);
-      await this.sessionManager.setUsername(username || ''); // Asignar username o cadena vacía
-      await this.storageService.set('isLoggedIn', true);
+        const username = userData?.username || '';
+        const userEmail = userData?.email || '';
+
+        await this.storageService.set('username', username);
+        await this.storageService.set('email', userEmail);
+      }
 
       return true;
     } catch (error) {
@@ -74,10 +74,18 @@ export class UserLogin {
         }
       });
       
-      await this.storageService.set('username', username); 
-      await this.sessionManager.setSession(true);
-      await this.sessionManager.setUsername(username); 
+      if (userId) {
+        // Obtener username y email desde Firestore
+        const username = await this.userService.getUsernameById(userId);
+        const emailFromDb = await this.userService.getEmailById(userId);
 
+        // Guardar en Ionic Storage
+        await this.storageService.set('username', username || '');
+        await this.storageService.set('email', emailFromDb || '');
+
+        // Guardar estado de sesión
+        await this.sessionManager.setSession(true);
+      }
       
       await this.storageService.set('isLoggedIn', true);
 
@@ -93,6 +101,7 @@ export class UserLogin {
     await this.afAuth.signOut();
     await this.sessionManager.clearSession();
     await this.storageService.remove('isLoggedIn'); 
-    await this.storageService.remove('username'); 
+    await this.storageService.remove('username');
+    await this.storageService.remove('email');
   }
 }

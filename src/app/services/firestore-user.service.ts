@@ -44,6 +44,17 @@ export class UserService {
     }
   }
 
+  async getEmailById(userId: string): Promise<string | null> {
+    try {
+      const userDoc = await this.firestore.collection('usuario').doc(userId).get().toPromise();
+      const userData = userDoc?.data() as { email?: string } | undefined;
+      return userData?.email || null;
+    } catch (error) {
+      console.error('Error al obtener el email:', error);
+      return null;
+    }
+  }
+
 
   // === UPDATE ===
   async updateUser(userId: string, data: { email?: string; username?: string }): Promise<void> {
